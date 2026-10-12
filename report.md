@@ -53,9 +53,9 @@ The secure-channel prototype was evaluated on the local Windows computer using M
 | Payload size | Mean round-trip time (ms) | Median round-trip time (ms) | Peak traced Python memory (bytes) | Packet bytes | Correctness |
 |---|---:|---:|---:|---:|---|
 
-| 1 KB (1,024 B) | 5.201 | 5.235 | 25,910 | 5,481 | Passed |
-| 100 KB (102,400 B) | 5.166 | 4.452 | 313,427 | 106,857 | Passed |
-| 10 MB (10,485,760 B) | 21.721 | 20.876 | 31,463,507 | 10,490,217 | Passed |
+| 1 KB (1,024 B) | 13.133 | 14.169 | 14,529 | 5,481 | Passed |
+| 100 KB (102,400 B) | 9.824 | 10.234 | 313,427 | 106,857 | Passed |
+| 10 MB (10,485,760 B) | 43.839 | 42.450 | 31,463,507 | 10,490,217 | Passed |
 
 
 
@@ -70,7 +70,7 @@ The secure-channel prototype was evaluated on the local Windows computer using M
 
 ### Results Analysis
 
-The local benchmark completed successfully for all three payload sizes, and the correctness check passed in every case. The mean round-trip time was 5.201 ms for the 1 KB payload, 5.166 ms for the 100 KB payload, and 21.721 ms for the 10 MB payload.
+The local benchmark completed successfully for all three payload sizes, and the correctness check passed in every case. The mean round-trip time was 13.133 ms for the 1 KB payload, 9.824 ms for the 100 KB payload, and 43.839 ms for the 10 MB payload.
 
 The 1 KB and 100 KB measurements were similar in this five-round run, while the 10 MB payload took longer and required substantially more traced Python memory. Peak traced Python memory increased from 25,910 bytes for 1 KB to 31,463,507 bytes for 10 MB. This is consistent with the larger payload and associated processing allocations, but these measurements alone do not isolate the cost of each cryptographic operation.
 
@@ -81,6 +81,12 @@ Because each payload size was tested for only five rounds on one Windows compute
 ### Source Code Size
 
 The Python source files under `src/` contained 10,296 characters, measured using PowerShell by recursively reading `.py` files and counting characters. This measurement is a source-size proxy; it does not represent compiled binary size, installed library size, or the size of the complete repository.
+
+### Sender-Side Cryptographic Operation Benchmark
+
+A separate 20-round benchmark measured sender-side ML-KEM-768 encapsulation and ML-DSA-65 signing on the local Windows computer. The mean time was 7.849 ms, the median time was 6.172 ms, and peak traced Python memory was 19,019 bytes.
+
+This measurement excludes receiver-side signature verification, KEM decapsulation, key derivation, payload encryption, and network communication. It is therefore a partial cryptographic-operation benchmark, not a complete handshake measurement. It should not be compared directly with the payload round-trip timings above.
 
 ## Man-in-the-Middle Risk and Mitigation
 

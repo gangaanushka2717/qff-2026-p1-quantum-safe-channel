@@ -27,15 +27,18 @@ requirements.txt  Python dependencies
 
 ## Local Benchmark Results
 
+## Local Benchmark Results
+
 The local software prototype was tested with payloads of 1 KB, 100 KB, and 10 MB over five rounds per size.
 
 | Payload | Mean round-trip time | Correctness |
 |---|---:|---|
-| 1 KB | 12.175 ms | Passed |
-| 100 KB | 13.358 ms | Passed |
-| 10 MB | 46.265 ms | Passed |
+| 1 KB | 13.133 ms | Passed |
+| 100 KB | 9.824 ms | Passed |
+| 10 MB | 43.839 ms | Passed |
 
-These timings measure a local cryptographic round trip, not network latency or quantum-processor execution. See `results/tables/local_benchmark.csv` for additional metrics.
+These timings measure a local cryptographic round trip, not network latency or quantum-processor execution. See `results/tables/local_benchmark.csv` for additional metrics. Results may vary between runs.
+
 
 ## Processor Topology Analysis
 
