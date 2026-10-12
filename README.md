@@ -73,3 +73,19 @@ The `liboqs` path above is specific to the local Windows setup and may need to b
 ## Status
 
 Prototype implemented; local correctness and tampering tests passed. Further protocol hardening and confirmation of the official Platform A/B/D benchmark requirements remain necessary.
+
+## TCP Messaging Demo
+
+The project includes a local TCP messaging demonstration that sends an encrypted message between a sender and receiver over a socket connection.
+
+Run it from the repository root on Windows PowerShell:
+
+```powershell
+$env:PATH = "$env:TEMP\liboqs-install\bin;$env:PATH"
+$env:PYTHONPATH = "$PWD\src"
+.\.venv\Scripts\python.exe src\network_demo.py
+```
+
+Expected output includes `TCP demo: PASSED`.
+
+**Scope:** This is a local demonstration, not a production-ready network protocol. The sender's verification key is provisioned out of band, and the demo does not implement a full certificate-based identity or key-distribution system.
