@@ -80,6 +80,9 @@ Digital signatures do not automatically prevent every man-in-the-middle attack. 
 
 The current prototype demonstrates signature verification and rejection of a modified encrypted message and an altered signature in local tests. It does not yet demonstrate a full network exchange between independent peers. Network-level MITM resistance and authenticated public-key distribution remain future validation tasks.  
 
+### Security Test Results
+
+The local prototype passed four checks: successful message recovery, rejection of modified ciphertext, rejection of an altered ML-DSA signature, and rejection when the receiver is given an incorrect expected recipient public key. These tests demonstrate the tested behaviours of the implementation; they do not establish complete protection against network-level man-in-the-middle attacks. Secure distribution and verification of public keys, peer identity binding, and network interoperability require further validation.
 
 ## Processor Topology Comparison
 
