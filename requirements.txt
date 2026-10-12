@@ -2,3 +2,5 @@ qiskit
 numpy
 matplotlib
 pandas
+cryptography
+liboqs-python
