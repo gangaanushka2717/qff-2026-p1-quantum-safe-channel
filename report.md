@@ -64,7 +64,7 @@ The secure-channel prototype was evaluated on the local Windows computer using M
 - Round-trip time measures the local encryption and decryption operation, including signature creation and verification. It is not a network handshake latency measurement.
 - Peak memory is measured using Python's `tracemalloc`; it does not represent total process memory.
 - Packet bytes include the KEM ciphertext, nonce, transcript, signature, and encrypted message. They exclude public-key distribution, network framing, and transport overhead.
-- Results were obtained on a single local Windows computer and should not be treated as Platform A, Platform B, or Platform D measurements.
+- Results were obtained on a single local Windows computer and are reported as the custom Platform D software benchmark. They are not measurements from Processor A or Processor B. Platform A and B cryptographic performance remains unmeasured.
 - Each payload size was tested five times. Results may vary with system load and software environment.
 **Packet-byte measurement:** The reported packet size is calculated by summing the lengths of all byte-valued fields returned by the local message-creation function. It includes the KEM ciphertext, nonce, transcript, signature, and encrypted message. It excludes public-key distribution, network headers, and other transport overhead; therefore, it is not a measurement of total network bytes exchanged.
 
