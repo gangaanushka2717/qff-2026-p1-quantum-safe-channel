@@ -5,8 +5,8 @@
     "Signature": "ML-DSA-65",
     "payload_bytes": 1024,
     "rounds": 5,
-    "mean_round_trip_ms": 13.133,
-    "median_round_trip_ms": 14.169,
+    "mean_round_trip_ms": 13.009,
+    "median_round_trip_ms": 14.044,
     "peak_traced_python_memory_bytes": 14529,
     "packet_bytes": 5481,
     "correctness": "passed"
@@ -17,8 +17,8 @@
     "Signature": "ML-DSA-65",
     "payload_bytes": 102400,
     "rounds": 5,
-    "mean_round_trip_ms": 9.824,
-    "median_round_trip_ms": 10.234,
+    "mean_round_trip_ms": 10.747,
+    "median_round_trip_ms": 9.562,
     "peak_traced_python_memory_bytes": 313427,
     "packet_bytes": 106857,
     "correctness": "passed"
@@ -29,8 +29,8 @@
     "Signature": "ML-DSA-65",
     "payload_bytes": 10485760,
     "rounds": 5,
-    "mean_round_trip_ms": 43.839,
-    "median_round_trip_ms": 42.45,
+    "mean_round_trip_ms": 38.286,
+    "median_round_trip_ms": 38.441,
     "peak_traced_python_memory_bytes": 31463507,
     "packet_bytes": 10490217,
     "correctness": "passed"

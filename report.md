@@ -53,10 +53,9 @@ The secure-channel prototype was evaluated on the local Windows computer using M
 | Payload size | Mean round-trip time (ms) | Median round-trip time (ms) | Peak traced Python memory (bytes) | Packet bytes | Correctness |
 |---|---:|---:|---:|---:|---|
 
-| 1 KB (1,024 B) | 13.133 | 14.169 | 14,529 | 5,481 | Passed |
-| 100 KB (102,400 B) | 9.824 | 10.234 | 313,427 | 106,857 | Passed |
-| 10 MB (10,485,760 B) | 43.839 | 42.450 | 31,463,507 | 10,490,217 | Passed |
-
+| 1 KB (1,024 B) | 13.009 | 14.044 | 14,529 | 5,481 | Passed |
+| 100 KB (102,400 B) | 10.747 | 9.562 | 313,427 | 106,857 | Passed |
+| 10 MB (10,485,760 B) | 38.286 | 38.441 | 31,463,507 | 10,490,217 | Passed |
 
 
 ### Measurement Notes
@@ -70,7 +69,7 @@ The secure-channel prototype was evaluated on the local Windows computer using M
 
 ### Results Analysis
 
-The local benchmark completed successfully for all three payload sizes, and the correctness check passed in every case. The mean round-trip time was 13.133 ms for the 1 KB payload, 9.824 ms for the 100 KB payload, and 43.839 ms for the 10 MB payload.
+The local benchmark completed successfully for all three payload sizes, and the correctness check passed in every case. The mean round-trip time was 13.009 ms for the 1 KB payload, 10.747 ms for the 100 KB payload, and 38.286 ms for the 10 MB payload.
 
 The 1 KB and 100 KB measurements were similar in this five-round run, while the 10 MB payload took longer and required substantially more traced Python memory. Peak traced Python memory increased from 25,910 bytes for 1 KB to 31,463,507 bytes for 10 MB. This is consistent with the larger payload and associated processing allocations, but these measurements alone do not isolate the cost of each cryptographic operation.
 

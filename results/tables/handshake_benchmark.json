@@ -2,8 +2,8 @@
   "platform": "Local Windows computer",
   "measurement": "Sender-side ML-KEM encapsulation and ML-DSA signing",
   "rounds": 20,
-  "mean_time_ms": 7.849,
-  "median_time_ms": 6.172,
+  "mean_time_ms": 6.902,
+  "median_time_ms": 5.377,
   "peak_traced_python_memory_bytes": 19019,
   "scope_note": "Not a complete two-peer or network handshake"
 }

@@ -1,4 +1,4 @@
 platform,KEM,Signature,payload_bytes,rounds,mean_round_trip_ms,median_round_trip_ms,peak_traced_python_memory_bytes,packet_bytes,correctness
-Local Windows computer,ML-KEM-768,ML-DSA-65,1024,5,13.133,14.169,14529,5481,passed
-Local Windows computer,ML-KEM-768,ML-DSA-65,102400,5,9.824,10.234,313427,106857,passed
-Local Windows computer,ML-KEM-768,ML-DSA-65,10485760,5,43.839,42.45,31463507,10490217,passed
+Local Windows computer,ML-KEM-768,ML-DSA-65,1024,5,13.009,14.044,14529,5481,passed
+Local Windows computer,ML-KEM-768,ML-DSA-65,102400,5,10.747,9.562,313427,106857,passed
+Local Windows computer,ML-KEM-768,ML-DSA-65,10485760,5,38.286,38.441,31463507,10490217,passed
