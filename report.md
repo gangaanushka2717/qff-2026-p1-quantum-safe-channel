@@ -21,3 +21,81 @@ Document assumptions, constraints, and unavailable resources.
 
 ## 7. Conclusion
 To be completed after the experiments.
+
+
+## Secure Channel Protocol Flow
+
+```mermaid
+flowchart TD
+    A["Recipient generates ML-KEM-768 key pair"]
+    B["Sender receives recipient public key"]
+    C["Sender encapsulates shared secret using ML-KEM-768"]
+    D["Sender hashes KEM ciphertext and nonce"]
+    E["Sender signs transcript using ML-DSA-65"]
+    F["HKDF-SHA-256 derives 256-bit AES key"]
+    G["AES-256-GCM encrypts the message"]
+    H["Sender transmits ciphertext, nonce, transcript and signature"]
+    I["Receiver verifies ML-DSA-65 signature"]
+    J["Receiver decapsulates KEM ciphertext"]
+    K["Receiver derives the same AES key"]
+    L["AES-256-GCM authenticates and decrypts"]
+    M["Original message recovered"]
+
+    A --> B --> C --> D --> E --> F --> G --> H
+    H --> I
+    I -->|Valid signature| J --> K --> L --> M
+    I -->|Invalid signature| N["Reject message"]
+```
+## Local Software Benchmark Results
+
+The secure-channel prototype was evaluated on the local Windows computer using ML-KEM-768, ML-DSA-65, HKDF-SHA-256, and AES-256-GCM. Each payload size was tested over five rounds.
+
+| Payload size | Mean round-trip time (ms) | Median round-trip time (ms) | Peak traced Python memory (bytes) | Packet bytes | Correctness |
+|---|---:|---:|---:|---:|---|
+| 1 KB (1,024 B) | 12.175 | 11.121 | 25,910 | 5,481 | Passed |
+| 100 KB (102,400 B) | 13.358 | 14.484 | 313,427 | 106,857 | Passed |
+| 10 MB (10,485,760 B) | 46.265 | 43.978 | 31,463,507 | 10,490,217 | Passed |
+
+### Measurement Notes
+
+- Round-trip time measures the local encryption and decryption operation, including signature creation and verification. It is not a network handshake latency measurement.
+- Peak memory is measured using Python's `tracemalloc`; it does not represent total process memory.
+- Packet bytes include the KEM ciphertext, nonce, transcript, signature, and encrypted message. They exclude public-key distribution, network framing, and transport overhead.
+- Results were obtained on a single local Windows computer and should not be treated as Platform A, Platform B, or Platform D measurements.
+- Each payload size was tested five times. Results may vary with system load and software environment.
+
+## Man-in-the-Middle Risk and Mitigation
+
+### Threat
+
+An attacker positioned between two communicating peers could intercept or replace messages. In a key-exchange protocol, an attacker may attempt to substitute their own public key so that each peer establishes a secret with the attacker instead of with the intended recipient.
+
+### Mitigation with ML-DSA
+
+ML-DSA-65 is used to digitally sign the protocol transcript. The receiver verifies the signature using the sender's trusted public verification key before accepting the message. This helps detect unauthorized transcript modification and sender impersonation.
+
+### Trust Assumption and Limitations
+
+Digital signatures do not automatically prevent every man-in-the-middle attack. The receiver must obtain the sender's public verification key through a trusted process, such as a verified certificate or an authenticated out-of-band exchange. If an attacker can replace the trusted public key itself, signature verification may not establish the intended identity.
+
+The current prototype demonstrates signature verification and rejection of a modified encrypted message and an altered signature in local tests. It does not yet demonstrate a full network exchange between independent peers. Network-level MITM resistance and authenticated public-key distribution remain future validation tasks.  
+
+
+## Processor Topology Comparison
+
+The supplied processor configurations were analyzed using their qubit counts and coupling maps.
+
+| Metric | Processor A | Processor B |
+|---|---:|---:|
+| Qubit count | 5 | 9 |
+| Coupling connections | 4 | 12 |
+| Connection density | 0.4000 | 0.3333 |
+| Average degree | 1.600 | 2.667 |
+| Basis gates specified | No | No |
+| Noise model specified | No | No |
+
+Processor B has more qubits, three times as many listed connections, and a higher average degree. Processor A has a higher connection density relative to the number of possible qubit pairs.
+
+**Limitations:** The comparison describes only the supplied coupling-map topology. The basis-gate sets and noise models are pending, so this analysis does not establish gate-level performance, fidelity, execution time, or cryptographic handshake performance on either processor.
+
+The local Windows software benchmarks are reported separately and must not be interpreted as Processor A or Processor B hardware results.

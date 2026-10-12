@@ -1,0 +1,17 @@
+
+{
+  "name": "Platform D",
+  "platform_type": "classical_software",
+  "operating_system": "Windows",
+  "python_version": "3.13.5",
+  "kem_algorithm": "ML-KEM-768",
+  "signature_algorithm": "ML-DSA-65",
+  "key_derivation": "HKDF-SHA-256",
+  "authenticated_encryption": "AES-256-GCM",
+  "native_crypto_library": "liboqs",
+  "benchmark_script": "src/benchmark.py",
+  "payload_sizes_bytes": [1024, 102400, 10485760],
+  "benchmark_rounds": 5,
+  "status": "local_software_benchmark_completed",
+  "notes": "Custom classical software platform. Not a quantum processor."
+}

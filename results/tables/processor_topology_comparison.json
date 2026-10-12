@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Processor A",
+    "qubits": 5,
+    "connections": 4,
+    "connection_density": 0.4,
+    "average_degree": 1.6,
+    "basis_gates_available": false,
+    "noise_model_available": false,
+    "configuration_status": "official_simulation_map_noise_pending"
+  },
+  {
+    "name": "Processor B",
+    "qubits": 9,
+    "connections": 12,
+    "connection_density": 0.3333,
+    "average_degree": 2.667,
+    "basis_gates_available": false,
+    "noise_model_available": false,
+    "configuration_status": "official_simulation_map_noise_pending"
+  }
+]

@@ -1,0 +1,45 @@
+
+{
+  "platform": "Platform D - Local Windows software environment",
+  "status": "benchmark_completed",
+  "algorithms": {
+    "key_encapsulation": "ML-KEM-768",
+    "digital_signature": "ML-DSA-65",
+    "key_derivation": "HKDF-SHA-256",
+    "encryption": "AES-256-GCM"
+  },
+  "rounds_per_payload": 5,
+  "results": [
+    {
+      "payload_bytes": 1024,
+      "mean_round_trip_ms": 12.175,
+      "median_round_trip_ms": 11.121,
+      "peak_traced_python_memory_bytes": 25910,
+      "packet_bytes": 5481,
+      "correctness": "passed"
+    },
+    {
+      "payload_bytes": 102400,
+      "mean_round_trip_ms": 13.358,
+      "median_round_trip_ms": 14.484,
+      "peak_traced_python_memory_bytes": 313427,
+      "packet_bytes": 106857,
+      "correctness": "passed"
+    },
+    {
+      "payload_bytes": 10485760,
+      "mean_round_trip_ms": 46.265,
+      "median_round_trip_ms": 43.978,
+      "peak_traced_python_memory_bytes": 31463507,
+      "packet_bytes": 10490217,
+      "correctness": "passed"
+    }
+  ],
+  "measurement_notes": [
+    "Five rounds were measured for each payload size.",
+    "Round-trip timing covers local encryption, signing, verification, decapsulation and decryption; it is not network handshake latency.",
+    "Memory is peak traced Python allocation, not total process RAM.",
+    "Packet bytes exclude public-key distribution and network framing.",
+    "Platform D is a proposed software benchmark platform, not an organizer-confirmed quantum processor."
+  ]
+}
