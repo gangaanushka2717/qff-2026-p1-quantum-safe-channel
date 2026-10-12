@@ -52,9 +52,12 @@ The secure-channel prototype was evaluated on the local Windows computer using M
 
 | Payload size | Mean round-trip time (ms) | Median round-trip time (ms) | Peak traced Python memory (bytes) | Packet bytes | Correctness |
 |---|---:|---:|---:|---:|---|
-| 1 KB (1,024 B) | 12.175 | 11.121 | 25,910 | 5,481 | Passed |
-| 100 KB (102,400 B) | 13.358 | 14.484 | 313,427 | 106,857 | Passed |
-| 10 MB (10,485,760 B) | 46.265 | 43.978 | 31,463,507 | 10,490,217 | Passed |
+
+| 1 KB (1,024 B) | 5.201 | 5.235 | 25,910 | 5,481 | Passed |
+| 100 KB (102,400 B) | 5.166 | 4.452 | 313,427 | 106,857 | Passed |
+| 10 MB (10,485,760 B) | 21.721 | 20.876 | 31,463,507 | 10,490,217 | Passed |
+
+
 
 ### Measurement Notes
 
@@ -63,6 +66,21 @@ The secure-channel prototype was evaluated on the local Windows computer using M
 - Packet bytes include the KEM ciphertext, nonce, transcript, signature, and encrypted message. They exclude public-key distribution, network framing, and transport overhead.
 - Results were obtained on a single local Windows computer and should not be treated as Platform A, Platform B, or Platform D measurements.
 - Each payload size was tested five times. Results may vary with system load and software environment.
+**Packet-byte measurement:** The reported packet size is calculated by summing the lengths of all byte-valued fields returned by the local message-creation function. It includes the KEM ciphertext, nonce, transcript, signature, and encrypted message. It excludes public-key distribution, network headers, and other transport overhead; therefore, it is not a measurement of total network bytes exchanged.
+
+### Results Analysis
+
+The local benchmark completed successfully for all three payload sizes, and the correctness check passed in every case. The mean round-trip time was 5.201 ms for the 1 KB payload, 5.166 ms for the 100 KB payload, and 21.721 ms for the 10 MB payload.
+
+The 1 KB and 100 KB measurements were similar in this five-round run, while the 10 MB payload took longer and required substantially more traced Python memory. Peak traced Python memory increased from 25,910 bytes for 1 KB to 31,463,507 bytes for 10 MB. This is consistent with the larger payload and associated processing allocations, but these measurements alone do not isolate the cost of each cryptographic operation.
+
+The packet-byte count includes the byte fields returned by the local prototype. It does not include public-key distribution, transport framing, or other network overhead. These results therefore describe a local cryptographic round trip, not a complete network handshake or a comparison across quantum processors.
+
+Because each payload size was tested for only five rounds on one Windows computer, the measurements should be treated as preliminary. Repeated runs across clearly specified platforms are needed for a stronger performance comparison.
+
+### Source Code Size
+
+The Python source files under `src/` contained 10,296 characters, measured using PowerShell by recursively reading `.py` files and counting characters. This measurement is a source-size proxy; it does not represent compiled binary size, installed library size, or the size of the complete repository.
 
 ## Man-in-the-Middle Risk and Mitigation
 
