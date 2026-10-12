@@ -21,7 +21,10 @@ with oqs.KeyEncapsulation(KEM_ALGORITHM) as recipient_kem:
         )
 
         received_message = receive_secure_message(
-            packet, recipient_kem, sender_public_key
+            packet,
+            recipient_kem,
+            recipient_public_key,
+            sender_public_key,
         )
 
         print("Original message:", message)
@@ -38,6 +41,7 @@ with oqs.KeyEncapsulation(KEM_ALGORITHM) as recipient_kem:
             receive_secure_message(
                 tampered_packet,
                 recipient_kem,
+                recipient_public_key,
                 sender_public_key,
             )
             print("Tampering test: FAILED")
@@ -54,6 +58,7 @@ with oqs.KeyEncapsulation(KEM_ALGORITHM) as recipient_kem:
             receive_secure_message(
                 bad_signature_packet,
                 recipient_kem,
+                recipient_public_key,
                 sender_public_key,
             )
             print("Signature test: FAILED")

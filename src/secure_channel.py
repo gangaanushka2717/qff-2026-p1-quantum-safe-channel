@@ -29,7 +29,12 @@ def create_secure_message(message, recipient_public_key, sender_signer):
         ciphertext, shared_secret = kem.encap_secret(recipient_public_key)
 
     nonce = os.urandom(12)
-    transcript = hashlib.sha256(ciphertext + nonce).digest()
+    transcript = hashlib.sha256(
+    b"QFF-2026-secure-channel-v2"
+    + recipient_public_key
+    + ciphertext
+    + nonce
+).digest()
 
     signature = sender_signer.sign(transcript)
     key = derive_key(shared_secret, transcript)
@@ -47,7 +52,12 @@ def create_secure_message(message, recipient_public_key, sender_signer):
     }
 
 
-def receive_secure_message(packet, recipient_kem, trusted_sender_public_key):
+def receive_secure_message(
+    packet,
+    recipient_kem,
+    recipient_public_key,
+    trusted_sender_public_key,
+):
     """Verify the sender's signature, then decrypt the message."""
 
     transcript = packet["transcript"]
@@ -65,8 +75,11 @@ def receive_secure_message(packet, recipient_kem, trusted_sender_public_key):
 
     # Confirm the transcript matches the packet contents.
     expected_transcript = hashlib.sha256(
-        packet["kem_ciphertext"] + packet["nonce"]
-    ).digest()
+    b"QFF-2026-secure-channel-v2"
+    + recipient_public_key
+    + packet["kem_ciphertext"]
+    + packet["nonce"]
+).digest()
 
     if transcript != expected_transcript:
         raise ValueError("Message transcript was modified!")
