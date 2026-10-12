@@ -4,3 +4,4 @@ matplotlib
 pandas
 cryptography
 liboqs-python
+networkx
