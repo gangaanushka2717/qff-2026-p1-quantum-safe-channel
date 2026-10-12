@@ -64,3 +64,25 @@ with oqs.KeyEncapsulation(KEM_ALGORITHM) as recipient_kem:
             print("Signature test: FAILED")
         except Exception:
             print("Signature test: PASSED — invalid signature rejected")
+
+        
+        # Test with a different expected recipient public key
+        with oqs.KeyEncapsulation(KEM_ALGORITHM) as other_recipient:
+            other_recipient_public_key = other_recipient.generate_keypair()
+
+            
+            try:
+                receive_secure_message(
+                    packet,
+                    recipient_kem,
+                    other_recipient_public_key,
+                    sender_public_key,
+                )
+            except ValueError as error:
+                if str(error) == "Message transcript was modified!":
+                    print("Recipient-key substitution test: PASSED")
+                else:
+                    raise
+            else:
+                print("Recipient-key substitution test: FAILED")
+
