@@ -77,6 +77,16 @@ The packet-byte count includes the byte fields returned by the local prototype. 
 
 Because each payload size was tested for only five rounds on one Windows computer, the measurements should be treated as preliminary. Repeated runs across clearly specified platforms are needed for a stronger performance comparison.
 
+### Benchmark Visualizations
+
+**Local secure-channel benchmark:** The following figure shows mean round-trip time for payloads of 1 KB, 100 KB, and 10 MB on the local Windows computer.
+
+![Local secure-channel benchmark](results/figures/local_benchmark.png)
+
+**Processor architecture comparison:** The following figure compares Processor A and Processor B by qubit count and documented coupling edges. This is an architectural comparison, not a cryptographic performance benchmark.
+
+![Processor A vs Processor B architecture comparison](results/figures/processor_comparison.png)
+
 ### Source Code Size
 
 The Python source files under `src/` contained 10,296 characters, measured using PowerShell by recursively reading `.py` files and counting characters. This measurement is a source-size proxy; it does not represent compiled binary size, installed library size, or the size of the complete repository.
