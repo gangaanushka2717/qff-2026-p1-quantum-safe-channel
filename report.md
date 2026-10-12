@@ -135,3 +135,26 @@ Processor B has more qubits, three times as many listed connections, and a highe
 **Limitations:** The comparison describes only the supplied coupling-map topology. The basis-gate sets and noise models are pending, so this analysis does not establish gate-level performance, fidelity, execution time, or cryptographic handshake performance on either processor.
 
 The local Windows software benchmarks are reported separately and must not be interpreted as Processor A or Processor B hardware results.
+
+
+## Processor Routing and Topology Analysis
+
+The processor configurations were loaded from the supplied JSON files. A breadth-first search was used to calculate shortest paths over the documented coupling maps.
+
+| Metric | Processor A | Processor B |
+|---|---:|---:|
+| Qubits | 5 | 9 |
+| Coupling edges | 4 | 12 |
+| Tested route | 0 → 1 → 3 → 4 | 0 → 8 |
+| Shortest-path hops | 3 | 1 |
+| Intermediate qubits | 2 | 0 |
+
+### Visualizations
+
+![Processor A topology](results/figures/processor_A_topology.png)
+
+![Processor B topology](results/figures/processor_B_topology.png)
+
+![Processor architecture comparison](results/figures/processor_comparison.png)
+
+These results describe connectivity and shortest-path routing on the supplied topology graphs. They do not represent measured quantum execution time, gate fidelity, noise, or cryptographic performance on either processor.
