@@ -79,13 +79,23 @@ Because each payload size was tested for only five rounds on one Windows compute
 
 ### Benchmark Visualizations
 
-**Local secure-channel benchmark:** The following figure shows mean round-trip time for payloads of 1 KB, 100 KB, and 10 MB on the local Windows computer.
+### Benchmark Visualizations
 
-![Local secure-channel benchmark](results/figures/local_benchmark.png)
+**Local secure-channel benchmark**
 
-**Processor architecture comparison:** The following figure compares Processor A and Processor B by qubit count and documented coupling edges. This is an architectural comparison, not a cryptographic performance benchmark.
+![Local benchmark chart](results/figures/local_benchmark.png)
 
-![Processor A vs Processor B architecture comparison](results/figures/processor_comparison.png)
+**Processor architecture comparison**
+
+![Processor A vs Processor B](results/figures/processor_comparison.png)
+
+**Processor A topology with shortest path**
+
+![Processor A topology](results/figures/processor_A_topology.png)
+
+**Processor B topology with shortest path**
+
+![Processor B topology](results/figures/processor_B_topology.png)
 
 ### Source Code Size
 
