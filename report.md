@@ -4,24 +4,21 @@
 Implement the official P1 problem statement and evaluate it using the supplied Processor A and Processor B models.
 
 ## 2. Methodology
-To be completed after verifying the official P1 requirements.
+The secure channel uses ML-KEM-768 for key establishment, ML-DSA-65 for sender authentication, HKDF-SHA-256 for key derivation, and AES-256-GCM for authenticated encryption. Processor topology and shortest-path routing are also analyzed.
 
 ## 3. Experimental Setup
 - Processor A: official configuration to be added
 - Processor B: official configuration to be added
 
 ## 4. Results
-To be completed with actual experiment results.
-
+Local Windows benchmarks were run for 1 KB, 100 KB, and 10 MB payloads. The results are documented below; cryptographic performance on Processor A and Processor B was not measured.
 ## 5. Processor A vs Processor B
-To be completed using measured results and architecture metrics.
-
+Processor A has 5 qubits and 4 coupling edges; Processor B has 9 qubits and 12 coupling edges. Shortest paths were calculated from their supplied coupling maps. This is a topology comparison, not a hardware performance benchmark.
 ## 6. Limitations
 Document assumptions, constraints, and unavailable resources.
 
 ## 7. Conclusion
-To be completed after the experiments.
-
+The local secure-channel tests and TCP demonstration passed. The project also includes processor topology visualizations and shortest-path routing. Results are limited to the tested local implementation; Processor A/B cryptographic performance remains unmeasured.
 
 ## Secure Channel Protocol Flow
 
