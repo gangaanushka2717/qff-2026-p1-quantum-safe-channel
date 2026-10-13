@@ -1,11 +1,27 @@
+﻿from collections import Counter
 
-def summarize_metrics(results):
-    """Return a simple summary of measured experiment results."""
+def circuit_metrics(circuit):
+    """Calculate structural metrics from a Qiskit QuantumCircuit."""
+    counts = Counter(
+        instruction.operation.name
+        for instruction in circuit.data
+    )
+
+    return {
+        "num_qubits": circuit.num_qubits,
+        "depth": circuit.depth(),
+        "gate_count": sum(counts.values()),
+        "gate_counts": dict(counts),
+        "cx_count": counts.get("cx", 0),
+        "swap_count": counts.get("swap", 0),
+        "fidelity": None,  # Requires a defined noise model or measured data.
+    }
+
+
+def summarize_results(results):
+    """Summarize a non-empty list of result dictionaries."""
     if not results:
-        return {
-            "num_runs": 0,
-            "success_rate": None,
-        }
+        raise ValueError("results must not be empty")
 
     successful_runs = sum(
         1 for result in results if result.get("success") is True
