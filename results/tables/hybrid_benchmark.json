@@ -1,0 +1,15 @@
+{
+  "benchmark": "ECDH-P256 + ML-KEM-768 hybrid exchange",
+  "environment": "Local Windows computer",
+  "rounds": 20,
+  "mean_latency_ms": 1.83271998539567,
+  "median_latency_ms": 1.5608000103384256,
+  "min_latency_ms": 1.3692000648006797,
+  "max_latency_ms": 4.421800025738776,
+  "exchange_packet_bytes": 1179,
+  "ephemeral_ecdh_public_bytes": 91,
+  "ml_kem_ciphertext_bytes": 1088,
+  "peak_traced_python_memory_bytes": 5874,
+  "key_match_verified": true,
+  "notes": "Local round-trip measurement; excludes recipient key generation, network overhead, and production authentication. Tracemalloc does not measure total process RAM."
+}
