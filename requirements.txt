@@ -1,7 +1,7 @@
+cryptography
+liboqs-python
 qiskit
 numpy
 matplotlib
 pandas
-cryptography
-liboqs-python
 networkx
