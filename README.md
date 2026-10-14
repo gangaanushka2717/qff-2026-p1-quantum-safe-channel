@@ -26,14 +26,58 @@ The prototype includes a local sender/receiver demonstration, tampering checks, 
 
 ## Repository Structure
 
+## Repo Structure
+
 ```text
-processors/       Processor A, Processor B, and proposed Platform D metadata
-src/              Secure-channel implementation and benchmark scripts
-results/tables/   Benchmark results in CSV and JSON formats
-main.py           Processor configuration summary
-quantum_test.py   Quantum-related test script
-report.md         Project report, protocol flow, and analysis
-requirements.txt  Python dependencies
+project/
+├── README.md
+├── main.ipynb
+├── requirements.txt
+├── data/
+│   ├── raw/
+│   │   └── README.md
+│   └── processed/
+│       └── README.md
+├── processors/
+│   ├── platform_D.json
+│   ├── processor_A.json
+│   └── processor_B.json
+├── src/
+│   ├── __init__.py
+│   ├── problem.py
+│   ├── processors.py
+│   ├── routing.py
+│   ├── metrics.py
+│   ├── visualization.py
+│   ├── compare_processors.py
+│   ├── secure_channel.py
+│   ├── hybrid_exchange.py
+│   ├── hybrid_benchmark.py
+│   ├── benchmark.py
+│   ├── network_demo.py
+│   ├── test_secure_channel.py
+│   ├── test_processor_transpilation.py
+│   └── test_noisy_simulation.py
+├── results/
+│   ├── tables/
+│   │   ├── connectivity_test.json
+│   │   ├── handshake_benchmark.json
+│   │   ├── hybrid_benchmark.csv
+│   │   ├── hybrid_benchmark.json
+│   │   ├── local_benchmark.csv
+│   │   ├── local_benchmark.json
+│   │   ├── noisy_simulation.json
+│   │   ├── platform_D_results.json
+│   │   └── processor_topology_comparison.json
+│   └── figures/
+│       ├── local_benchmark.png
+│       ├── processor_A_topology.png
+│       ├── processor_B_topology.png
+│       └── processor_comparison.png
+├── report.md
+└── assets/
+    └── qff_phase1_latex_images/
+        └── (optional visual assets)
 ```
 
 ## Local Benchmark Results
