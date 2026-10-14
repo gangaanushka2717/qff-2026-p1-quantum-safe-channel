@@ -1,0 +1,32 @@
+{
+  "A": {
+    "physical_qubits_available": 5,
+    "transpiled_circuit_qubits": 5,
+    "circuit_depth": 28,
+    "gate_counts": {
+      "rz": 34,
+      "sx": 17,
+      "cx": 11,
+      "measure": 5,
+      "barrier": 1
+    },
+    "swap_count": 0,
+    "optimization_level": 1,
+    "seed_transpiler": 42
+  },
+  "B": {
+    "physical_qubits_available": 9,
+    "transpiled_circuit_qubits": 9,
+    "circuit_depth": 7,
+    "gate_counts": {
+      "rz": 10,
+      "cx": 5,
+      "sx": 5,
+      "measure": 5,
+      "barrier": 1
+    },
+    "swap_count": 0,
+    "optimization_level": 1,
+    "seed_transpiler": 42
+  }
+}

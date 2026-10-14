@@ -1,3 +1,14 @@
+# Qiskit Fall Fest 2026 — Phase 1
+
+## Selected Problem Statement
+
+**Track 5: Post-Quantum Cryptography (Quantum-Safe Systems)**
+
+**PS-P1: Quantum-Safe Hybrid Key Exchange**
+
+**Task:** Implement and benchmark a hybrid key encapsulation mechanism combining classical ECDH (P-256) with NIST post-quantum standard ML-KEM-768 (Kyber). Measure handshake latency, ciphertext size, and memory overhead on simulated standard (Platform A) versus constrained (Platform B) CPU environments.
+
+**Data / Setup:** Use public Python libraries (`pyca/cryptography` and `oqs-python` / `liboqs`, or a pure-Python ML-KEM reference).
 # QFF 2026 Phase 1 — Quantum-Safe Secure Channel
 
 A prototype secure messaging channel using post-quantum cryptographic algorithms for key establishment, authentication, key derivation, and authenticated encryption.
